@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs-app
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+    spec:
+      initContainers:
+        - name: migrate
+          image: piyushh69/droply-app:v2
+          command: ["npx", "drizzle-kit", "push"]
+          envFrom:
+            - secretRef:
+                name: app-secrets
+      containers:
+        - name: app
+          image: piyushh69/droply-app:v2
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secrets

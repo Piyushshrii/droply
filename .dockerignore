@@ -1,0 +1,41 @@
+# ------------------------
+# Node dependencies
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Environment files
+.env
+.env.*
+!.env.production    # Optional: only include this if you really want .env.production
+.env.local
+.env.development
+.env.test
+
+# Build output
+.next
+out
+dist
+coverage
+
+# OS / editor files
+.DS_Store
+*.swp
+*.swo
+*.swn
+*.sublime-project
+*.sublime-workspace
+.idea
+.vscode
+
+# Logs
+*.log
+
+# Docker & Git
+.dockerignore
+.docker-compose
+.git
+.gitignore
+
